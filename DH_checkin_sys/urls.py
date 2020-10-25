@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from track import views as track_views
+from users import views as user_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("track/", track_views.home, name="track-home")
+    path("admin/", admin.site.urls),
+    path("track/", track_views.home, name="track-home"),
+    path("login/", user_views.login, name="user-login"),
 ]

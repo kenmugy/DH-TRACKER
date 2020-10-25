@@ -1,2 +1,5 @@
-{% extend 'track/base.html' %} 
-{% block content %} {% endblock %}
+{% extend 'track/base.html' %} {% block content %}
+<div class="container">
+  <form action="" method="post">{% csrf_token %} {{form}}</form>
+</div>
+{% endblock %}
