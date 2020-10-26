@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "track",
     "users",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -115,5 +116,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-LOGIN_URL_REDIRECT = "track-home"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+LOGIN_REDIRECT_URL = "track-home"
 
