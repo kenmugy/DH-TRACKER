@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_list_or_404
 from django.forms import modelform_factory
 from .models import Contact
+from .forms import ContactForm
 
-ContactForm = modelform_factory(Contact, exclude=[])
+# ContactForm = modelform_factory(Contact, exclude=[])
 
 
 def home(request):
@@ -11,10 +12,6 @@ def home(request):
 
 
 def contact(request):
-    return render(request, "track/contact.html")
-
-
-def new(request):
     form = ContactForm()
-    return render(request, "track/new.html", {"form": form})
+    return render(request, "track/contact.html", {"form": form})
 
