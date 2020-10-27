@@ -1,7 +1,7 @@
-{% extends "track/base.html" %} {% load crispy_forms_tags %} {% block content %}
-<div class="content-section">
-  <h1>You've een Logged Out</h1>
-  <div class="border-top pt-3">
+{% extends "track/base.html" %} {% block content %}
+<div class="card mt-5">
+  <h1 class="card-header">You've been Logged Out</h1>
+  <div class="card-body">
     <small class="text-muted">
       <a href="{% url 'login' %}">Login Again?</a>
     </small>
