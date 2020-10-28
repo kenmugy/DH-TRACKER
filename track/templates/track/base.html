@@ -16,7 +16,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">DH Tracker</a>
+          <a class="navbar-brand mr-4" href="{% url 'home' %}">DH Tracker</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -57,7 +57,8 @@
       <div class="row">
         <!-- <div class="col-md-8"> -->
         <div class="col-md-8 container">
-          {% if messages %} {% for message in messages %}
+          {% if messages %} 
+          {% for message in messages %}
           <div
             class="alert alert-{{message.tags}} alert-dismissible fade show"
             role="alert"
@@ -72,7 +73,9 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          {% endfor %} {% endif %} {% block content %}{% endblock %}
+          {% endfor %} 
+          {% endif %} 
+          {% block content %}{% endblock %}
         </div>
       </div>
     </main>

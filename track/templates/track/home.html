@@ -1,14 +1,14 @@
 {% extends 'track/base.html' %} {% block content %}
 <div class="container">
-   <div class="mb-2">
+  <div class="mb-2">
     <form class="form-inline my-2 my-lg-0">
-        <h1 class="indigo-text mr-3">Contacts</h1>
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" />
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      Search
-    </button>
-  </form>
-   </div>
+      <h1 class="indigo-text mr-3">Contacts</h1>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+  </div>
   <div class="table-responsive">
     <table class="table table-sm table-hover">
       <thead>
@@ -19,20 +19,29 @@
           <th scope="col">ID no.</th>
           <th scope="col">Telephone</th>
           <th scope="col">Date</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        {% for contact in contacts %}
-        <tr>
+        {% if contacts %} {% for contact in contacts %}
+        <tr class="link">
           <td>{{contact.name}}</td>
           <td>{{contact.temperature}}</td>
           <td>{{contact.company}}</td>
           <td>{{contact.id_no}}</td>
           <td>{{contact.telephone}}</td>
           <td>{{contact.date}}</td>
+          <td>
+            <a
+              href="{% url 'update' contact.id %}"
+              class="btn btn-outline-danger"
+              >Update</a
+            >
+          </td>
         </tr>
-
-        {% endfor %} {% endblock %}
+        {% endfor %} {% else %}
+        <h4>You have nothing</h4>
+        {% endif %} {% endblock %}
       </tbody>
     </table>
   </div>

@@ -3,11 +3,15 @@
   <form action="" method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Update Contact</legend>
+      <legend class="border-bottom mb-4">
+        Update Temperature for <span class="text-danger">{{contact.name}}</span>
+      </legend>
       {{form|crispy}}
     </fieldset>
     <div class="form-group">
-      <button class="btn btn-outline-info">Update</button>
+      <a href="{% url 'home' %}">
+        <button class="btn btn-outline-info">Update</button></a
+      >
     </div>
   </form>
 </div>

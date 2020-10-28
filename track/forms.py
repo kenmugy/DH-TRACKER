@@ -24,4 +24,4 @@ class ContactForm(ModelForm):
 class UpdateContactForm(ModelForm):
     class Meta:
         model = Contact
-        fields = ['temperature']
+        fields = ["temperature"]
