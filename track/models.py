@@ -9,3 +9,6 @@ class Contact(models.Model):
     id_no = models.CharField(max_length=150, blank=True)
     telephone = models.CharField(max_length=150)
     date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.name} with temperature of {self.temperature}"

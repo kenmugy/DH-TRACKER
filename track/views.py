@@ -4,7 +4,7 @@ from django.contrib.messages import success
 from django.contrib.auth.decorators import login_required
 
 from .models import Contact
-from .forms import ContactForm
+from .forms import ContactForm, UpdateContactForm
 
 # ContactForm = modelform_factory(Contact, exclude=[])
 
@@ -29,4 +29,12 @@ def contact(request):
         form = ContactForm()
 
     return render(request, "track/contact.html", {"form": form})
+
+
+def update_contact(request):
+    form = UpdateContactForm()
+
+    # if request.method == 'POST':
+    #     form = UpdateContactForm(instance=)
+    return render(request, "track/update_contact.html", {"form": form})
 

@@ -20,3 +20,8 @@ class ContactForm(ModelForm):
             raise ValidationError("Date cannot be in the past")
         return d
 
+
+class UpdateContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['temperature']
