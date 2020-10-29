@@ -52,6 +52,17 @@
       </div>
     </div>
   </div>
+  <!-- search html starts here -->
+  <!-- <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for user in filter.qs %}
+    <li>{{ user.name }} </li>
+  {% endfor %}
+  </ul> -->
+  <!-- search html ends here -->
   <div class="table-responsive">
     <table class="table table-sm table-hover">
       <thead>
@@ -66,7 +77,7 @@
         </tr>
       </thead>
       <tbody>
-        {% if contacts %} {% for contact in contacts %}
+        {% for contact in contact_list %}
         <tr class="link">
           <td>{{contact.name}}</td>
           <td>{{contact.temperature}}</td>
@@ -82,9 +93,7 @@
             >
           </td>
         </tr>
-        {% endfor %} {% else %}
-        <h4>You have nothing</h4>
-        {% endif %} {% endblock %}
+        {% endfor %} {% endblock %}
       </tbody>
     </table>
   </div>
