@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from track.views import landing_page
 # from users import views as user_views
 
 urlpatterns = [
+    path("", landing_page),
     path("admin/", admin.site.urls),
     path("track/", include('track.urls')),
     path(

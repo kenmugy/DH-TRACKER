@@ -1,0 +1,20 @@
+{% extends 'track/base.html' %} {% block content%}
+<div class="jumbotron">
+  <h1 class="display-4"><b>DH Tracker</b></h1>
+  <p class="lead">
+    Welcome, to Design Hub's Online registeration of all people coming into the
+    space to aid in the tracking of contacts, this has been created to reduce on
+    the paperwork that has piled up and also alot of repetition of simple tasks.
+  </p>
+  <hr class="my-4" />
+  <p>
+    This is a closed System and accounts for users(data entrants/receptionists)
+    are created by the Admin and you have to Login to proceed
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button"
+      >Login</a
+    >
+  </p>
+</div>
+{% endblock %}

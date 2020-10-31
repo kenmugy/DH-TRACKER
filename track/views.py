@@ -47,6 +47,14 @@ def contact_search(request):
     context = {}
     contact_filter = ContactFilter(request.GET, queryset=Contact.objects.all().order_by('-date'))
     context['filtered_contacts'] = contact_filter
+    return render(request, 'track/contact_search.html', context=context)
+
+def landing_page(request):
+    return render(request, 'track/landing_page.html')
+
+
+
+
 
 
 
@@ -56,7 +64,7 @@ def contact_search(request):
 
 # @login_required
 # def home(request):
-#     contacts = get_list_or_404(Contact) or None
+#     contacts = get_list_or_404(Contact) 
 #     return render(request, "track/home.html", {"contacts": contacts})
 
 # class ContactListView(ListView):
@@ -67,4 +75,3 @@ def contact_search(request):
 #         context = super().get_context_data(**kwargs)
 #         context['filter'] = ContactFilter(self.request.GET, queryset = self.get_queryset())
 #         return context
-    return render(request, 'track/contact_search.html', context=context)
