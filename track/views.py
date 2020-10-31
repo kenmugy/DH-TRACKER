@@ -29,7 +29,9 @@ def update_contact(request, id):
         form = UpdateContactForm(request.POST)
         if form.is_valid():
             new_temperature = form.cleaned_data.get("temperature")
+            name = contact_to_update.name
             contact_to_update.temperature = new_temperature
+            success(request, f"{name}'s new temperature is {new_temperature}")
             contact_to_update.save()
             return redirect("home")
     else:
