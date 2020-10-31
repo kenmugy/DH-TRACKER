@@ -25,7 +25,7 @@ SECRET_KEY = ")3d3a2qz%*4qne%r(j92j_+iy7g-)r^525xc63@-67(_*vkdln"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dehu-tracker.herokuapp.com']
 
 
 # Application definition
@@ -88,6 +88,7 @@ DATABASES = {
         "PASSWORD": '73ff5d14c2d08acbbf6f1342f26564fc2befcc3a447fe4803cb1bbda33f6faf0'
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
