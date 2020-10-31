@@ -1,5 +1,5 @@
+# from django.forms import modelform_factory,
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
-from django.forms import modelform_factory,
 from django.contrib.messages import success
 from django.contrib.auth.decorators import login_required
 from .models import Contact
@@ -7,23 +7,6 @@ from .forms import ContactForm, UpdateContactForm
 from django.views.generic import ListView 
 
 from .filters import ContactFilter
-# ContactForm = modelform_factory(Contact, exclude=[])
-
-
-
-# @login_required
-# def home(request):
-#     contacts = get_list_or_404(Contact) or None
-#     return render(request, "track/home.html", {"contacts": contacts})
-
-class ContactListView(ListView):
-    model = Contact
-    template_name = 'track/home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = ContactFilter(self.request.GET, queryset = self.get_queryset())
-        return context
 
 @login_required
 def contact(request):
@@ -39,7 +22,7 @@ def contact(request):
 
     return render(request, "track/contact.html", {"form": form})
 
-
+@login_required
 def update_contact(request, id):
     contact_to_update = Contact.objects.get(pk=id)
     if request.method == "POST":
@@ -50,15 +33,36 @@ def update_contact(request, id):
             contact_to_update.save()
             return redirect("home")
     else:
-        form = UpdateContactForm()
+        form = UpdateContactForm(initial={'temperature': contact_to_update.temperature})
     return render(
         request,
         "track/update_contact.html",
         {"form": form, "contact": contact_to_update},
     )
 
-# handle filter search
-# def search(request):
-#     contact_list = Contact.objects.all()
-#     contact_filter = ContactFilter(request.GET, queryset=contact_list)
-#     return render(request, 'search/contact_list.html', {'filter': contact_filter})
+@login_required
+def contact_search(request):
+    context = {}
+    contact_filter = ContactFilter(request.GET, queryset=Contact.objects.all().order_by('-date'))
+    context['filtered_contacts'] = contact_filter
+
+
+
+# ContactForm = modelform_factory(Contact, exclude=[])
+
+
+
+# @login_required
+# def home(request):
+#     contacts = get_list_or_404(Contact) or None
+#     return render(request, "track/home.html", {"contacts": contacts})
+
+# class ContactListView(ListView):
+#     model = Contact
+#     template_name = 'track/home.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['filter'] = ContactFilter(self.request.GET, queryset = self.get_queryset())
+#         return context
+    return render(request, 'track/contact_search.html', context=context)

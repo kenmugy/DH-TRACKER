@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "track",
     "users",
     "crispy_forms",
-    "django_filter",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
