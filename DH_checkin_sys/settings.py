@@ -81,7 +81,7 @@ WSGI_APPLICATION = "DH_checkin_sys.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": BASE_DIR / "d28548gt1aggnk",
+        "NAME": "d28548gt1aggnk",
         "HOST": 'ec2-54-160-18-230.compute-1.amazonaws.com',
         "PORT": 5432,
         "USER":'bpnyhhfbqhupzn',
