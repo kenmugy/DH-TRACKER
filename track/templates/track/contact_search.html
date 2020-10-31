@@ -1,14 +1,14 @@
 {% extends 'track/base.html' %} {% load crispy_forms_tags %} {% block content %}
 <div class="container">
-  <h3 class="text-center">Contacts</h3>
   <div class="">
-    <form method="get" class="my-4">
+    <form method="get" class="mb-4">
       {{ filtered_contacts.form|crispy }}
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
-      <!-- search html ends here -->
-      <div class="table-responsive">
+  <!-- search html ends here -->
+  <h3 class="text-center">Contacts</h3>
+  <div class="table-responsive">
         <table class="table table-sm table-hover">
           <thead>
             <tr>
@@ -22,6 +22,7 @@
             </tr>
           </thead>
           <tbody>
+            {% if filtered_contacts.qs %}
             {% for contact in filtered_contacts.qs %}
             <tr class="link">
               <td>{{contact.name}}</td>
@@ -38,9 +39,13 @@
                 >
               </td>
             </tr>
-            {% endfor %} {% endblock %}
+            {% endfor %} 
+            {% else %}
+            <h4 class="text-center text-danger mb-3">...No contacts...</h4>
+            {% endif %}
           </tbody>
         </table>
+        {% endblock %}
       </div>
     </div>
   </div>
