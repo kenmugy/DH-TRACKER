@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ")3d3a2qz%*4qne%r(j92j_+iy7g-)r^525xc63@-67(_*vkdln"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -123,3 +123,6 @@ LOGIN_REDIRECT_URL = "home"
 
 LOGIN_URL = "login"
 
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
