@@ -35,11 +35,11 @@ def update_contact(request, id):
             contact_to_update.save()
             return redirect("home")
     else:
-        form = UpdateContactForm(initial={'temperature': contact_to_update.temperature, title: 'Update'})
+        form = UpdateContactForm(initial={'temperature': contact_to_update.temperature, 'title': 'Update'})
     return render(
         request,
         "track/update_contact.html",
-        {"form": form, "contact": contact_to_update},
+        {"form": form, "contact": contact_to_update, "title": "Update"},
     )
 
 @login_required
@@ -50,7 +50,7 @@ def contact_search(request):
     return render(request, 'track/contact_search.html', context=context)
 
 def landing_page(request):
-    return render(request, 'track/landing_page.html', context={'title', 'Landing'})
+    return render(request, 'track/landing_page.html')
 
 
 
