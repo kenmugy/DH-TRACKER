@@ -20,7 +20,7 @@ def contact(request):
     else:
         form = ContactForm()
 
-    return render(request, "track/contact.html", {"form": form})
+    return render(request, "track/contact.html", {"form": form, title: 'Login'})
 
 @login_required
 def update_contact(request, id):
@@ -35,7 +35,7 @@ def update_contact(request, id):
             contact_to_update.save()
             return redirect("home")
     else:
-        form = UpdateContactForm(initial={'temperature': contact_to_update.temperature})
+        form = UpdateContactForm(initial={'temperature': contact_to_update.temperature, title: 'Update'})
     return render(
         request,
         "track/update_contact.html",
@@ -44,13 +44,13 @@ def update_contact(request, id):
 
 @login_required
 def contact_search(request):
-    context = {}
+    context = {'title': 'Home'}
     contact_filter = ContactFilter(request.GET, queryset=Contact.objects.all().order_by('-date'))
     context['filtered_contacts'] = contact_filter
     return render(request, 'track/contact_search.html', context=context)
 
 def landing_page(request):
-    return render(request, 'track/landing_page.html')
+    return render(request, 'track/landing_page.html', context={'title', 'Landing'})
 
 
 
